@@ -4,12 +4,11 @@
 
 Memory Game is a classic memory game where the player must find all the matching pairs of cards. It's a great way to test and improve your short-term memory while having fun!
 
-## 🫧gFeatures
+## 🫧Features
 
 - Simple and intuitive user interface
 - Colorful and attractive graphics
 - Background music and sound effects
-- Scoring system to track your best performances
 
 ## 🧑‍💻 Technologies Used
 
