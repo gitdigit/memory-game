@@ -1,4 +1,4 @@
-const emojis = ["😀", "😂", "❤️", "🌟", "😊", "🥳", "👍", "🔥"];
+const emojis = ["🐱", "🐣", "❤️", "🌟", "😊", "🥳", "👍", "🔥", "🤠", "🤖", "🐰", "🐻‍❄️", "🦄", "🦜","🦋","😽"];
 let emojiCells = document.querySelectorAll('.cell');
 let firstCard = null;
 let secondCard = null;
@@ -19,6 +19,12 @@ function fillEmojis() {
     });
 }
 
+function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
+}
+
+
 function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
@@ -38,8 +44,11 @@ function flipCard() {
 
 function checkForMatch() {
     let isMatch = firstCard.querySelector('.front').textContent === secondCard.querySelector('.front').textContent;
-
-    isMatch ? disableCards() : unflipCards();
+    if(isMatch){
+        isableCards(); 
+    }else{
+        unflipCards();
+    }
 }
 
 function disableCards() {
@@ -65,10 +74,17 @@ function resetBoard() {
     lockBoard = false;
 }
 
+playSound("backgroundmusic");
 document.addEventListener('DOMContentLoaded', () => {
     fillEmojis();
+
 
     emojiCells.forEach(cell => {
         cell.addEventListener('click', flipCard);
     });
+
+    document.body.addEventListener('click', () => {
+        playSound("backgroundmusic");
+    }, { once: true });
 });
+
