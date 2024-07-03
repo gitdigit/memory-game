@@ -5,26 +5,17 @@ let secondCard = null;
 let lockBoard = false;
 let hasFlippedCard = false;
 
-function getRandomEmoji() {
-    const indexEmoji = Math.floor(Math.random() * emojis.length);
-    return emojis[indexEmoji]; 
+function getShuffledArray(array) {
+    return array.sort(() => Math.random() - 0.5);
 }
 
 function fillEmojis() {
-    const selectedEmojis = [];
-    
-    for (let i = 0; i < emojiCells.length / 2; i++) {
-        const emoji = getRandomEmoji();
-        selectedEmojis.push(emoji, emoji);
-    }
-    
-    for (let i = selectedEmojis.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [selectedEmojis[i], selectedEmojis[j]] = [selectedEmojis[j], selectedEmojis[i]];
-    }
-    
+    const selectedEmojis = getShuffledArray(emojis).slice(0, emojiCells.length / 2);
+    const emojiPairs = [...selectedEmojis, ...selectedEmojis];
+    const shuffledEmojis = getShuffledArray(emojiPairs);
+
     emojiCells.forEach((cell, index) => {
-        cell.querySelector('.front').textContent = selectedEmojis[index];
+        cell.querySelector('.front').textContent = shuffledEmojis[index];
     });
 }
 
