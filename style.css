@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -27,6 +32,7 @@ body {
     width: 400px;
     background-color: white;
     padding: 10px;
+    perspective: 1000px;
 }
 
 .cell {
